@@ -35,7 +35,11 @@ class MyModel extends ChangeNotifier {
 
   get getProfileName => _profileName;
   get getPhoneNumber => _phoneNumber;
-  ImageProvider getImage()=> FileImage(File(_imagePath)??AssetImage('assets/index.png'));
+  ImageProvider getImage(){
+    if(_imagePath==null)
+      return AssetImage("assets/index.png");
+    else
+      FileImage(File(_imagePath));}
   get ifEnabled => edit;
 
   Future<void> imagePick() async {
